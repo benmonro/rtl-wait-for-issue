@@ -22,7 +22,7 @@ test("should match snapshot async", async () => {
 
 test("should show stuff", async () => {
   render(<App />);
-  waitFor(() => {
+  await waitFor(() => {
 
     expect(document.body).toMatchSnapshot();
   });
