@@ -9,9 +9,13 @@ test('renders learn react link', () => {
 });
 
 test("should match snapshot async", async () => {
-  render(<App />);
-  // fireEvent.click(screen.getByText("click me"));
+  const mockApi = jest.fn();
+  render(<App callApi={mockApi} />);
+  fireEvent.click(screen.getByText("click me"));
 
-  // waitFor()
-  expect(document.body).toMatchSnapshot();
+  await waitFor(() => {
+    // expect(mockApi).toBeCalled(); //fails without this.  but why?
+    expect(mockApi.mock.calls).toMatchSnapshot()
+  })
+
 })
