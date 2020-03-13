@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App({ callApi }) {
+  const [showStuff, setShowStuff] = useState(false);
+  useEffect(() => {
+    setTimeout(() => { setShowStuff(true) }, 500)
+  });
   function handleClick() {
     setTimeout(() => {
 
@@ -15,6 +19,7 @@ function App({ callApi }) {
         <img src={logo} className="App-logo" alt="logo" />
         <button onClick={handleClick}>click me</button>
 
+        {showStuff && <div>stuff</div>}
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>

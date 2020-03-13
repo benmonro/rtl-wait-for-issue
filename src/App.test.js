@@ -18,4 +18,12 @@ test("should match snapshot async", async () => {
     expect(mockApi.mock.calls).toMatchSnapshot()
   })
 
-})
+});
+
+test("should show stuff", async () => {
+  render(<App />);
+  waitFor(() => {
+
+    expect(document.body).toMatchSnapshot();
+  });
+});
